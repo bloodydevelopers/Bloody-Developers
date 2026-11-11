@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Core Landing Page -->
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Software Products Directory -->
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#products</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Software Products: Individual Systems -->
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-attendance</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-cafe</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-task</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-school</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-single-vendor</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-multi-vendor</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-crm-erp</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Engineering Services -->
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#services</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Industries We Serve -->
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#industries</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Company & Why Choose Us -->
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#why-us</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contact & Consultation -->
+  <url>
+    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#contact</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
