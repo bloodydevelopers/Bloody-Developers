@@ -266,9 +266,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               </div>
 
               <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                <span className="text-[11.5px] text-[#718096]">
-                  Strict NDA & Non-Disclosure Protected
-                </span>
                 <button
                   type="submit"
                   disabled={loading}
