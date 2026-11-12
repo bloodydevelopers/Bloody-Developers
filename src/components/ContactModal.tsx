@@ -291,10 +291,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     className="w-full bg-[#08101a] border border-white/10 rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors cursor-pointer"
                   >
-                    <option value="< $10k">&lt; $10k</option>
-                    <option value="$10k - $25k">$10k - $25k</option>
-                    <option value="$25k - $50k">$25k - $50k</option>
-                    <option value="$50k+">$50k+ Enterprise</option>
+                    <option value="< $10k">&lt; ₹10k</option>
+                    <option value="$10k - $25k">₹10k - ₹25k</option>
+                    <option value="$25k - $50k">₹25k - ₹50k</option>
+                    <option value="$50k+">₹50k+ Enterprise</option>
                   </select>
                 </div>
               </div>
