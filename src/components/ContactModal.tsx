@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Send, CheckCircle2, ArrowRight } from 'lucide-react';
+import { X, Send, CheckCircle2, ArrowRight, Loader2, AlertCircle } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -24,7 +24,9 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState('');
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Auto-sync selected service and pre-fill details whenever the modal opens
   useEffect(() => {
@@ -71,6 +73,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       }));
       setSubmitted(false);
       setErrors({});
+      setSubmitError(null);
     }
   }, [isOpen, defaultService]);
 
@@ -89,19 +92,68 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setLoading(true);
-    setTimeout(() => {
+    setSubmitError(null);
+
+    const accessKey =
+      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ||
+      'a9f7b0c1-1267-4864-891e-94a286a589ff';
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New Project Inquiry: ${formData.service} from ${formData.name}${formData.company ? ` (${formData.company})` : ''}`,
+          from_name: 'Bloody Developer Website',
+          name: formData.name,
+          email: formData.email,
+          replyto: formData.email,
+          phone: formData.phone || 'Not provided',
+          company: formData.company || 'Not provided',
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.message,
+          botcheck: '',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmittedName(formData.name);
+        setSubmitted(true);
+        // Clear form for subsequent inquiries
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: defaultService || 'Custom Software Development',
+          budget: '$10k - $25k',
+          message: '',
+        });
+      } else {
+        setSubmitError(data.message || 'Failed to submit inquiry. Please try again or reach out directly.');
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setSubmitError('Unable to connect to the email server. Please check your internet connection and try again.');
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 700);
+    }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
       <div className="relative w-full max-w-[650px] max-h-[92vh] overflow-y-auto bg-[#0c1624] border border-white/15 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-[0_25px_70px_rgba(0,0,0,0.95),0_0_35px_rgba(255,38,56,0.18)]">
         {/* Glow corner */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-[#ff2638]/15 rounded-full blur-3xl pointer-events-none" />
@@ -121,7 +173,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             </div>
             <h3 className="text-[22px] sm:text-[24px] font-bold text-white">Project Inquiry Received!</h3>
             <p className="text-[14px] text-[#8e9cae] max-w-[440px] mx-auto leading-relaxed">
-              Thank you, <span className="text-white font-medium">{formData.name}</span>. A senior solutions architect from Bloody Developer will review your requirements and reach out within 24 hours.
+              Thank you, <span className="text-white font-medium">{submittedName || 'there'}</span>. A senior solutions architect from Bloody Developer will review your requirements and reach out within 24 hours.
             </p>
             <div className="pt-3">
               <button
@@ -158,9 +210,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Alex Morgan"
-                    className={`w-full bg-[#08101a] border ${
-                      errors.name ? 'border-[#ff2638]' : 'border-white/10'
-                    } rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors`}
+                    className={`w-full bg-[#08101a] border ${errors.name ? 'border-[#ff2638]' : 'border-white/10'
+                      } rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors`}
                   />
                   {errors.name && <span className="text-[11px] text-[#ff2638] mt-1 block">{errors.name}</span>}
                 </div>
@@ -174,9 +225,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="alex@company.com"
-                    className={`w-full bg-[#08101a] border ${
-                      errors.email ? 'border-[#ff2638]' : 'border-white/10'
-                    } rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors`}
+                    className={`w-full bg-[#08101a] border ${errors.email ? 'border-[#ff2638]' : 'border-white/10'
+                      } rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors`}
                   />
                   {errors.email && <span className="text-[11px] text-[#ff2638] mt-1 block">{errors.email}</span>}
                 </div>
@@ -258,21 +308,30 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Describe your current bottleneck, desired features, timeline, and tech requirements..."
-                  className={`w-full bg-[#08101a] border ${
-                    errors.message ? 'border-[#ff2638]' : 'border-white/10'
-                  } rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors resize-none`}
+                  className={`w-full bg-[#08101a] border ${errors.message ? 'border-[#ff2638]' : 'border-white/10'
+                    } rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors resize-none`}
                 />
                 {errors.message && <span className="text-[11px] text-[#ff2638] mt-1 block">{errors.message}</span>}
               </div>
+
+              {submitError && (
+                <div className="flex items-center gap-2.5 p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-[12.5px] leading-relaxed">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>{submitError}</span>
+                </div>
+              )}
 
               <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#ff2638] hover:bg-[#e01f30] text-white text-[13.5px] sm:text-[14px] font-bold px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(255,38,56,0.45)] hover:shadow-[0_0_28px_rgba(255,38,56,0.65)] transition-all cursor-pointer active:scale-97 disabled:opacity-50 min-h-12"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#ff2638] hover:bg-[#e01f30] text-white text-[13.5px] sm:text-[14px] font-bold px-6 py-3 rounded-xl shadow-[0_0_20px_rgba(255,38,56,0.45)] hover:shadow-[0_0_28px_rgba(255,38,56,0.65)] transition-all cursor-pointer active:scale-97 disabled:opacity-60 disabled:cursor-not-allowed min-h-12"
                 >
                   {loading ? (
-                    <span>Submitting...</span>
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending Inquiry...</span>
+                    </>
                   ) : (
                     <>
                       <span>Submit Inquiry</span>
