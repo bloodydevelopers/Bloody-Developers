@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, ArrowUpRight, Menu, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
 import { PRODUCTS } from '../data/products';
@@ -26,6 +26,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
+  const productsRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -49,6 +52,43 @@ export const Navbar: React.FC<NavbarProps> = ({
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle outside click and Escape key to close dropdowns
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (productsRef.current && !productsRef.current.contains(target)) {
+        setProductsOpen(false);
+      }
+      if (servicesRef.current && !servicesRef.current.contains(target)) {
+        setServicesOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setProductsOpen(false);
+        setServicesOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const toggleProducts = () => {
+    setProductsOpen((prev) => !prev);
+    setServicesOpen(false);
+  };
+
+  const toggleServices = () => {
+    setServicesOpen((prev) => !prev);
+    setProductsOpen(false);
+  };
 
   const scrollTo = (id: string) => {
     setMobileMenuOpen(false);
@@ -130,15 +170,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Products Dropdown */}
               <div
+                ref={productsRef}
                 className="relative py-2.5"
-                onMouseEnter={() => setProductsOpen(true)}
-                onMouseLeave={() => setProductsOpen(false)}
               >
                 <button
-                  onClick={() => scrollTo('products')}
+                  type="button"
+                  onClick={toggleProducts}
                   className={`flex items-center gap-1.5 hover:text-white transition-colors duration-200 cursor-pointer ${
-                    activeSection === 'products' ? 'text-white' : ''
+                    activeSection === 'products' || productsOpen ? 'text-white' : ''
                   }`}
+                  aria-expanded={productsOpen}
+                  aria-haspopup="true"
                 >
                   <span>Products</span>
                   <ChevronDown
@@ -157,10 +199,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {productsOpen && (
                   <div className="absolute top-[50px] lg:top-[56px] -left-12 w-[380px] xl:w-[420px] bg-[#0c1624] border border-white/12 rounded-xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] p-2.5 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                    <div className="text-[11px] uppercase font-bold tracking-wider text-[#ff2638] px-3 py-2 border-b border-white/8 flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => scrollTo('products')}
+                      className="w-full text-[11px] uppercase font-bold tracking-wider text-[#ff2638] hover:text-[#ff4d5e] px-3 py-2 border-b border-white/8 flex items-center justify-between cursor-pointer transition-colors group"
+                    >
                       <span>Our Software Systems</span>
-                      <span className="text-[10px] text-[#8e9aa8] lowercase font-normal">7 suites</span>
-                    </div>
+                      <span className="text-[10px] text-[#8e9aa8] group-hover:text-white flex items-center gap-0.5 normal-case font-normal">View section →</span>
+                    </button>
                     <div className="py-1">
                       {PRODUCTS.map((prod) => (
                         <button
@@ -189,15 +235,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Services Dropdown */}
               <div
+                ref={servicesRef}
                 className="relative py-2.5"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
               >
                 <button
-                  onClick={() => scrollTo('services')}
+                  type="button"
+                  onClick={toggleServices}
                   className={`flex items-center gap-1.5 hover:text-white transition-colors duration-200 cursor-pointer ${
-                    activeSection === 'services' ? 'text-white' : ''
+                    activeSection === 'services' || servicesOpen ? 'text-white' : ''
                   }`}
+                  aria-expanded={servicesOpen}
+                  aria-haspopup="true"
                 >
                   <span>Services</span>
                   <ChevronDown
@@ -216,9 +264,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {servicesOpen && (
                   <div className="absolute top-[50px] lg:top-[56px] -left-8 w-[320px] xl:w-[350px] bg-[#0c1624] border border-white/12 rounded-xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] p-2.5 backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                    <div className="text-[11px] uppercase font-bold tracking-wider text-[#ff2638] px-3 py-2 border-b border-white/8">
-                      Engineering & Growth
-                    </div>
+                    <button
+                      type="button"
+                      onClick={() => scrollTo('services')}
+                      className="w-full text-[11px] uppercase font-bold tracking-wider text-[#ff2638] hover:text-[#ff4d5e] px-3 py-2 border-b border-white/8 flex items-center justify-between cursor-pointer transition-colors group"
+                    >
+                      <span>Engineering & Growth</span>
+                      <span className="text-[10px] text-[#8e9aa8] group-hover:text-white flex items-center gap-0.5 normal-case font-normal">View section →</span>
+                    </button>
                     <div className="py-1">
                       {[
                         { label: 'Custom Software Development', id: 'custom-dev' },
@@ -294,7 +347,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
               {/* Contact */}
               <button
-                onClick={() => onOpenContact()}
+                type="button"
+                onClick={() => {
+                  setProductsOpen(false);
+                  setServicesOpen(false);
+                  onOpenContact();
+                }}
                 className="hover:text-white transition-colors duration-200 cursor-pointer"
               >
                 Contact
