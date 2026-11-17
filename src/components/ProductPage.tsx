@@ -93,10 +93,29 @@ export const ProductPage: React.FC<ProductPageProps> = ({
 
   useEffect(() => {
     document.title = `${product.title} — Bloody Developer`;
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const prevDesc = metaDesc ? metaDesc.getAttribute('content') : '';
+    if (metaDesc) {
+      metaDesc.setAttribute('content', product.description);
+    }
+
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const prevCanonical = canonical ? canonical.getAttribute('href') : '';
+    if (canonical) {
+      canonical.setAttribute('href', `https://bloodydevelopers.vercel.app/products/${product.id}`);
+    }
+
     return () => {
-      document.title = 'Bloody Developer — Software Products & Custom Engineering';
+      document.title = 'Bloody Developer — Business Software Products & Custom Engineering';
+      if (metaDesc && prevDesc) {
+        metaDesc.setAttribute('content', prevDesc);
+      }
+      if (canonical && prevCanonical) {
+        canonical.setAttribute('href', prevCanonical);
+      }
     };
-  }, [product.id]);
+  }, [product.id, product.title, product.description]);
 
   // Find next and previous products for carousel navigation
   const currentIndex = PRODUCTS.findIndex((p) => p.id === product.id);
