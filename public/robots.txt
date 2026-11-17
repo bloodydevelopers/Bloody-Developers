@@ -1,5 +1,36 @@
-# robots.txt for Bloody Developer (https://bloodydevelopers.vercel.app)
-# Optimized for Google Search, Bing, Google Ads, and AI Agents
+# ==============================================================================
+# BLOODY DEVELOPER — ROBOTS PROTOCOL DIRECTIVE
+# ==============================================================================
+# Organization : Bloody Developer (https://bloodydevelopers.vercel.app)
+# Headquarters : Rourkela, Odisha, India
+# Contact      : bloodydevelopers@gmail.com | +91 7684047069
+# Description  : Production-ready business software products, custom full-stack
+#                web and mobile app development, enterprise ERP/CRM systems,
+#                and performance-driven digital marketing solutions.
+#
+# READY-TO-USE SOFTWARE PRODUCTS:
+# 1. Employee Attendance Management System   - Biometric/GPS time tracking & payroll sync
+# 2. Cafe Management POS Suite               - Cloud billing, KDS tickets & inventory control
+# 3. Task & Project Management Software      - Kanban boards, Gantt charts & team telemetry
+# 4. School Management System                - Institutional ERP, student records & fee billing
+# 5. Single-Vendor E-Commerce Platform       - Headless digital storefront & instant checkout
+# 6. Multi-Vendor Marketplace Software       - Multi-seller commerce, vendor dashboards & escrow
+# 7. Integrated Enterprise CRM & ERP Suite   - Multi-branch operations, finance & procurement
+#
+# CUSTOM SOFTWARE ENGINEERING SERVICES:
+# - Web Application Development              - Responsive, high-speed enterprise web apps
+# - Mobile Application Development           - Native & cross-platform Android & iOS apps
+# - Bespoke Software Solutions               - Purpose-built systems for exact operational workflows
+# - Custom CRM & ERP Engineering             - Lead pipelines, double-entry ledgers & asset control
+# - API & Cloud System Integration           - Third-party SaaS, payment gateways & hardware sync
+#
+# DIGITAL MARKETING & GROWTH SOLUTIONS:
+# - Meta Advertising (Facebook & Instagram)  - High-converting customer acquisition funnels
+# - Google Ads & Performance Marketing       - High-intent commercial search & display campaigns
+# - LinkedIn B2B Advertising                 - Decision-maker targeting & account-based marketing
+# - Search Engine Optimization (SEO)         - Technical, entity & on-page organic ranking
+# - Conversion Rate Optimization (CRO)       - Telemetry-driven user flow & revenue optimization
+# ==============================================================================
 
 User-agent: *
 Allow: /
