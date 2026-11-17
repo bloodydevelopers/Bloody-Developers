@@ -6,11 +6,11 @@ import {
   ArrowUpRight,
   ChevronRight,
   Network,
-  Phone,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PRODUCTS } from '../data/products';
 import { Logo } from './Logo';
+import { WhatsAppIcon, WHATSAPP_NUMBERS, NavbarWhatsApp } from './WhatsAppUI';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -118,18 +118,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                 <Logo size="md" className="hidden sm:flex transition-transform group-hover:scale-102" />
               </button>
 
-              {/* Direct Call Button (Highlighted Vibrating Icon) */}
+              {/* WhatsApp & Close Actions */}
               <div className="flex items-center gap-2">
-                <a
-                  href="tel:7684047069"
-                  className="bg-white/6 hover:bg-white/12 text-[#c4ccd7] hover:text-white border border-white/10 text-[12px] font-semibold pl-2 pr-3 py-1.5 rounded-full flex items-center gap-2 cursor-pointer transition-colors touch-manipulation"
-                  title="Call 7684047069"
-                >
-                  <span className="w-5 h-5 rounded-full bg-[#ff2638] flex items-center justify-center shrink-0 shadow-[0_0_8px_rgba(255,38,56,0.6)]">
-                    <Phone className="w-3 h-3 text-white animate-phone-vibrate fill-white" />
-                  </span>
-                  <span className="hidden xs:inline text-white/90">7684047069</span>
-                </a>
+                <NavbarWhatsApp />
 
                 {/* Close Button with Ghost-Click Protection */}
                 <button
@@ -324,6 +315,39 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                   <span>Start a New Project</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
+
+                {/* WhatsApp Instant Chat for Both Numbers */}
+                <div className="p-3 rounded-xl bg-[#25D366]/8 border border-[#25D366]/25 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-[#25D366] uppercase tracking-wider flex items-center gap-1.5">
+                      <WhatsAppIcon className="w-3.5 h-3.5" />
+                      <span>Chat on WhatsApp</span>
+                    </span>
+                    <span className="text-[10px] text-white/50">Online</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2">
+                    {WHATSAPP_NUMBERS.map((wa) => (
+                      <a
+                        key={wa.id}
+                        href={wa.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-2 rounded-lg bg-white/4 hover:bg-[#25D366]/20 border border-white/8 hover:border-[#25D366]/50 transition-all touch-manipulation group"
+                      >
+                        <div>
+                          <div className="text-[12px] font-bold text-white group-hover:text-[#25D366] transition-colors">
+                            {wa.display}
+                          </div>
+                          <div className="text-[10px] text-[#8e9cae]">
+                            {wa.label}
+                          </div>
+                        </div>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Status and direct contact */}
                 <div className="grid grid-cols-2 gap-3 text-[11px] text-[#8e9cae]">
