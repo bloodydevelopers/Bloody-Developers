@@ -176,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="text-white/20">·</span>
             <span className="hover:text-white transition-colors cursor-pointer">Terms & Conditions</span>
             <span className="text-white/20">·</span>
-            <a
+            {/* <a
               href="/sitemap"
               onClick={(e) => {
                 if (onOpenSitemap) {
@@ -188,7 +188,7 @@ export const Footer: React.FC<FooterProps> = ({
               title="HTML Sitemap & Technical Directory"
             >
               Sitemap
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
