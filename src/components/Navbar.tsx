@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ArrowUpRight, Menu, Phone } from 'lucide-react';
+import { ChevronDown, ArrowUpRight, Menu } from 'lucide-react';
 import { motion } from 'motion/react';
 import { PRODUCTS } from '../data/products';
 import { MobileMenu } from './MobileMenu';
 import { Logo } from './Logo';
+import { NavbarWhatsApp } from './WhatsAppUI';
 
 interface NavbarProps {
   onOpenContact: (defaultService?: string) => void;
@@ -371,34 +372,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
             </nav>
 
-            {/* Far Right: Direct Phone Call Button (Icon Highlighted & Vibrating) */}
+            {/* Far Right: WhatsApp Connect with Dropdown for Both Numbers */}
             <div className="flex items-center gap-2 sm:gap-3">
-              <a
-                href="tel:7684047069"
-                className={`hidden sm:inline-flex items-center gap-2.5 text-[#c4ccd7] hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 pl-2 pr-4 py-1.5 lg:pl-2 lg:pr-4.5 lg:py-1.5 rounded-full text-[13px] lg:text-[14px] font-semibold transition-all duration-300 cursor-pointer active:scale-97 group ${
-                  isScrolled ? 'scale-[0.96]' : 'scale-100'
-                }`}
-                title="Call 7684047069"
-              >
-                {/* Highlighted & Vibrating Call Icon */}
-                <span className="w-6 h-6 sm:w-6.5 sm:h-6.5 rounded-full bg-[#ff2638] flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,38,56,0.65)] group-hover:scale-108 transition-transform duration-200">
-                  <Phone className="w-3.5 h-3.5 text-white animate-phone-vibrate fill-white" />
-                </span>
-                <span className="tracking-wide text-white/90 group-hover:text-white">7684047069</span>
-              </a>
-
-              {/* Mobile Quick Call Icon (Highlighted & Vibrating) */}
-              <a
-                href="tel:7684047069"
-                className={`sm:hidden flex items-center justify-center bg-white/6 hover:bg-white/12 border border-white/10 rounded-xl transition-all duration-300 cursor-pointer active:scale-95 ${
-                  isScrolled ? 'min-w-[38px] min-h-[38px]' : 'min-w-[42px] min-h-[42px]'
-                }`}
-                aria-label="Call 7684047069"
-              >
-                <span className="w-7 h-7 rounded-full bg-[#ff2638] flex items-center justify-center shadow-[0_0_10px_rgba(255,38,56,0.65)]">
-                  <Phone className="w-3.5 h-3.5 text-white animate-phone-vibrate fill-white" />
-                </span>
-              </a>
+              <NavbarWhatsApp isScrolled={isScrolled} />
 
               {/* Mobile Menu Toggle Button (iOS Safari Tap Optimized) */}
               <button
