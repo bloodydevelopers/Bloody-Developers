@@ -1,0 +1,37 @@
+# Bloody Developer
+
+> Bloody Developer is a software engineering company based in Rourkela, Odisha, India. We build production-ready business software, custom web applications, enterprise ERP/CRM engines, and performance digital marketing funnels.
+
+- Website: https://bloodydevelopers.vercel.app/
+- HTML Sitemap: https://bloodydevelopers.vercel.app/sitemap
+- XML Sitemap: https://bloodydevelopers.vercel.app/sitemap.xml
+- Contact: bloodydevelopers@gmail.com | +91 7684047069
+- Headquarters: Rourkela, Odisha, India
+
+## Production Software Products
+
+- [Employee Attendance Management System](https://bloodydevelopers.vercel.app/products/attendance): Automated biometric time tracking, geo-fenced mobile check-ins, rotational shift rotas, and one-click payroll compliance.
+- [Cafe Management POS Software](https://bloodydevelopers.vercel.app/products/cafe): High-velocity cloud POS, kitchen display system (KDS), real-time recipe ingredient depletion, and contactless QR ordering.
+- [Task & Project Management Software](https://bloodydevelopers.vercel.app/products/task): Agile Kanban boards, Gantt timelines, automated sprint velocity tracking, and team collaboration.
+- [School Management Software](https://bloodydevelopers.vercel.app/products/school): Complete institutional ERP for student dossiers, automated GPA calculation, online tuition fee billing, and parent communication.
+- [Single Vendor E-Commerce Platform](https://bloodydevelopers.vercel.app/products/single-vendor): Blazing-fast headless online storefront with 0.4s load times, 1-click checkout, automated inventory tracking, and payment gateways.
+- [Multi-Vendor Marketplace Platform](https://bloodydevelopers.vercel.app/products/multi-vendor): Scalable multi-seller commerce platform with dedicated vendor dashboards, tiered commissions, and payment escrow payouts.
+- [Integrated CRM & ERP Solutions](https://bloodydevelopers.vercel.app/products/crm-erp): Centralized enterprise suite unifying multi-stage sales pipelines, double-entry financial ledgers, procurement, and predictive forecasting.
+
+## Custom Software Engineering
+
+- Web Design & Development: Expert, responsive, business-oriented websites and portals.
+- Mobile Application Development: Android and cross-platform mobile apps with offline resilience.
+- Custom Software Development: Tailored architectures solving complex operational bottlenecks.
+- Custom CRM Development: Client management, deal pipeline tracking, and automated communications.
+- ERP Development: Unified business operations, inventory, supply chain, and double-entry accounting.
+- API Development & Integrations: Secure REST/GraphQL APIs, payment gateways, and hardware IoT sync.
+
+## Performance Digital Marketing
+
+- Meta Advertising: Target campaigns across Facebook and Instagram.
+- Google Ads & Performance Marketing: Capture high-intent searchers and buyers.
+- LinkedIn B2B Advertising: Reach corporate decision-makers, CTOs, and founders.
+- Social Media Marketing (SMM): Brand authority, audience growth, and community engagement.
+- Search Engine Optimization (SEO): Organic rankings in Google Search and AI agent search.
+- Conversion Rate Optimization (CRO): Funnel analytics and user journey optimization.
