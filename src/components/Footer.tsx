@@ -71,9 +71,6 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
 
             <div className="pt-1 sm:pt-2 flex flex-row flex-wrap items-center gap-2.5 xs:gap-3 text-[12px] xs:text-[13px]">
-              <span className="text-[#8e9cae] flex items-center gap-1.5 font-medium">
-                <MapPin className="w-3.5 h-3.5 text-[#ff2638] shrink-0" />
-              </span>
 
               <span className="text-white/20">·</span>
 
