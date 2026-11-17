@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
 import { Logo } from './Logo';
+import { WhatsAppIcon, WHATSAPP_NUMBERS } from './WhatsAppUI';
 
 interface FooterProps {
   onOpenContact: (service?: string) => void;
@@ -70,16 +71,10 @@ export const Footer: React.FC<FooterProps> = ({
             </p>
 
             <div className="pt-1 sm:pt-2 flex flex-row flex-wrap items-center gap-2.5 xs:gap-3 text-[12px] xs:text-[13px]">
-              <a
-                href="tel:7684047069"
-                className="inline-flex items-center gap-2 text-white hover:text-[#ff2638] font-semibold transition-colors group"
-                title="Call 7684047069"
-              >
-                <span className="w-6 h-6 xs:w-7 xs:h-7 rounded-full bg-[#ff2638] flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,38,56,0.65)] group-hover:scale-105 transition-transform">
-                  <Phone className="w-3 h-3 xs:w-3.5 xs:h-3.5 text-white animate-phone-vibrate fill-white" />
-                </span>
-                <span>+91 7684047069</span>
-              </a>
+              <span className="text-[#8e9cae] flex items-center gap-1.5 font-medium">
+                <MapPin className="w-3.5 h-3.5 text-[#ff2638] shrink-0" />
+                <span>Rourkela, Odisha, India</span>
+              </span>
 
               <span className="text-white/20">·</span>
 
@@ -117,15 +112,34 @@ export const Footer: React.FC<FooterProps> = ({
                 </ul>
               </div>
 
-              {/* Address / Headquarters */}
+              {/* Contact Information with both phone numbers */}
               <div className="pt-2.5 sm:pt-3 mt-2.5 sm:mt-3 border-t border-white/6 space-y-1">
                 <h5 className="text-[9.5px] xs:text-[10px] sm:text-[11px] font-bold tracking-[0.16em] text-[#ff2638] uppercase flex items-center gap-1.5">
-                  <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#ff2638] shrink-0" />
-                  <span>Address</span>
+                  <Phone className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#ff2638] shrink-0" />
+                  <span>Contact</span>
                 </h5>
-                <p className="text-[11px] xs:text-[11.5px] sm:text-[12.5px] text-[#cbd5e1] font-medium leading-relaxed">
-                  Rourkela, Odisha, India
-                </p>
+                <div className="space-y-0.5 text-[11px] xs:text-[11.5px] sm:text-[12.5px] font-medium leading-relaxed">
+                  <a
+                    href="https://wa.me/918917323361?text=Hello%20Bloody%20Developer%2C%20I%20would%20like%20to%20inquire%20about%20your%20software%20solutions."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-[#cbd5e1] hover:text-[#25D366] transition-colors py-0.5 group"
+                    title="Chat on WhatsApp: 8917323361"
+                  >
+                    <WhatsAppIcon className="w-3 h-3 text-[#25D366] shrink-0 group-hover:scale-110 transition-transform" />
+                    <span>8917323361</span>
+                  </a>
+                  <a
+                    href="https://wa.me/917684047069?text=Hello%20Bloody%20Developer%2C%20I%20would%20like%20to%20inquire%20about%20your%20software%20solutions."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-[#cbd5e1] hover:text-[#25D366] transition-colors py-0.5 group"
+                    title="Chat on WhatsApp: 7684047069"
+                  >
+                    <WhatsAppIcon className="w-3 h-3 text-[#25D366] shrink-0 group-hover:scale-110 transition-transform" />
+                    <span>7684047069</span>
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -162,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="text-white/20">·</span>
             <span className="hover:text-white transition-colors cursor-pointer">Terms & Conditions</span>
             <span className="text-white/20">·</span>
-            {/* <a
+            <a
               href="/sitemap"
               onClick={(e) => {
                 if (onOpenSitemap) {
@@ -174,7 +188,7 @@ export const Footer: React.FC<FooterProps> = ({
               title="HTML Sitemap & Technical Directory"
             >
               Sitemap
-            </a> */}
+            </a>
           </div>
         </div>
       </div>
