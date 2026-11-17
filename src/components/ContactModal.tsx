@@ -18,7 +18,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     phone: '',
     company: '',
     service: defaultService || 'Custom Software Development',
-    budget: '₹10k - ₹25k',
+    budget: '10,000 - 25,000',
     message: '',
   });
 
@@ -138,7 +138,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           phone: '',
           company: '',
           service: defaultService || 'Custom Software Development',
-          budget: '₹10k - ₹25k',
+          budget: '10,000 - 25,000',
           message: '',
         });
       } else {
@@ -291,12 +291,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                     className="w-full bg-[#08101a] border border-white/10 rounded-xl px-3.5 py-2.5 text-[16px] sm:text-[13.5px] text-white focus:outline-none focus:border-[#ff2638] transition-colors cursor-pointer"
                   >
-                    <option value="< ₹10k">&lt; ₹10k</option>
-                    <option value="₹10k - ₹25k">₹10k - ₹25k</option>
-                    <option value="₹25k - ₹50k">₹25k - ₹50k</option>
-                    <option value="₹50k - ₹1 Lakh">₹50k - ₹1 Lakh</option>
-                    <option value="₹1 Lakh - ₹5 Lakhs">₹1 Lakh - ₹5 Lakhs</option>
-                    <option value="₹5 Lakhs+">₹5 Lakhs+ Enterprise</option>
+                    <option value="< 10,000">&lt; 10,000</option>
+                    <option value="10,000 - 25,000">10,000 - 25,000</option>
+                    <option value="25,000 - 50,000">25,000 - 50,000</option>
+                    <option value="50,000 - 1,00,000">50,000 - 1,00,000</option>
+                    <option value="1,00,000 - 5,00,000">1,00,000 - 5,00,000</option>
+                    <option value="5,00,000+">5,00,000+ Enterprise</option>
                   </select>
                 </div>
               </div>
