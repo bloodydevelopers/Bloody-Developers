@@ -439,7 +439,6 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({
             <div className="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4 text-[12px] text-[#cbd5e1]">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#ff2638]" />
-                <span>Rourkela, Odisha, India</span>
               </span>
               <span className="text-white/20">·</span>
               <div className="flex flex-wrap items-center gap-2">
