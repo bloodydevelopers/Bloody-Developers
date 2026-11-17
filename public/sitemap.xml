@@ -6,94 +6,74 @@
 
   <!-- Core Landing Page -->
   <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <loc>https://bloodydevelopers.vercel.app/</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Software Products Directory -->
+  <!-- Dedicated HTML Sitemap Webpage -->
   <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#products</loc>
-    <lastmod>2026-11-05</lastmod>
+    <loc>https://bloodydevelopers.vercel.app/sitemap</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Product 1: Employee Attendance Management System -->
+  <url>
+    <loc>https://bloodydevelopers.vercel.app/products/attendance</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Software Products: Individual Systems -->
+  <!-- Product 2: Cafe Management Software -->
   <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-attendance</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-cafe</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-task</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-school</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-single-vendor</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-multi-vendor</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#product-crm-erp</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Engineering Services -->
-  <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#services</loc>
-    <lastmod>2026-11-05</lastmod>
+    <loc>https://bloodydevelopers.vercel.app/products/cafe</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Industries We Serve -->
+  <!-- Product 3: Applications for Project and Task Management -->
   <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#industries</loc>
-    <lastmod>2026-11-05</lastmod>
+    <loc>https://bloodydevelopers.vercel.app/products/task</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
-  <!-- Company & Why Choose Us -->
+  <!-- Product 4: School Management Software -->
   <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#why-us</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://bloodydevelopers.vercel.app/products/school</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
-  <!-- Contact & Consultation -->
+  <!-- Product 5: Single Vendor E-commerce Platform -->
   <url>
-    <loc>https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/#contact</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://bloodydevelopers.vercel.app/products/single-vendor</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Product 6: Multi-Vendor Marketplace Software -->
+  <url>
+    <loc>https://bloodydevelopers.vercel.app/products/multi-vendor</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Product 7: ERP and CRM Software Solutions -->
+  <url>
+    <loc>https://bloodydevelopers.vercel.app/products/crm-erp</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
