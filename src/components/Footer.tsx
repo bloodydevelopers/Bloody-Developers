@@ -161,7 +161,7 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
             <span className="text-white/20">·</span>
             <span className="hover:text-white transition-colors cursor-pointer">Terms & Conditions</span>
-            {onOpenSitemap && (
+            {/* {onOpenSitemap && (
               <>
                 <span className="text-white/20">·</span>
                 <button
@@ -172,7 +172,7 @@ export const Footer: React.FC<FooterProps> = ({
                   Sitemap
                 </button>
               </>
-            )}
+            )} */}
           </div>
         </div>
       </div>
