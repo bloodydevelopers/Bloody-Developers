@@ -16,10 +16,17 @@ import { TestimonialsFaqSection } from './components/TestimonialsFaqSection';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
 import { IndustryDetailModal } from './components/IndustryDetailModal';
-import { SitemapModal } from './components/SitemapModal';
+import { SitemapPage } from './components/SitemapPage';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { PRODUCTS, Product } from './data/products';
 import { Industry, INDUSTRIES } from './data/industries';
+
+// Helper to determine if current path is the sitemap route
+const isSitemapPath = (): boolean => {
+  if (typeof window === 'undefined') return false;
+  const path = window.location.pathname.replace(/\/+$/, '');
+  return path === '/sitemap' || path === '/sitemap.html';
+};
 
 // Helper to determine productId from current URL pathname
 const getProductIdFromUrl = (): string | null => {
@@ -35,15 +42,17 @@ const getProductIdFromUrl = (): string | null => {
 
 export default function App() {
   const [activeProductId, setActiveProductId] = useState<string | null>(getProductIdFromUrl);
+  const [isSitemap, setIsSitemap] = useState<boolean>(isSitemapPath);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [contactService, setContactService] = useState<string | undefined>(undefined);
   const [selectedIndustry, setSelectedIndustry] = useState<Industry | null>(null);
-  const [sitemapOpen, setSitemapOpen] = useState(false);
 
   // Sync state with browser Back/Forward navigation
   useEffect(() => {
     const handlePopState = () => {
+      const sitemapRoute = isSitemapPath();
       const id = getProductIdFromUrl();
+      setIsSitemap(sitemapRoute);
       setActiveProductId(id);
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
@@ -66,6 +75,7 @@ export default function App() {
     }
     const found = PRODUCTS.find((p) => p.id === productId);
     if (found) {
+      setIsSitemap(false);
       setActiveProductId(found.id);
       window.history.pushState({}, '', `/products/${found.id}`);
       // Immediately reset scroll to the top of the viewport
@@ -76,6 +86,7 @@ export default function App() {
   };
 
   const handleNavigateHome = (sectionId?: string) => {
+    setIsSitemap(false);
     setActiveProductId(null);
     window.history.pushState({}, '', '/');
     if (sectionId) {
@@ -89,11 +100,20 @@ export default function App() {
     }
   };
 
+  const handleNavigateSitemap = () => {
+    setActiveProductId(null);
+    setIsSitemap(true);
+    window.history.pushState({}, '', '/sitemap');
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   const handleSelectIndustry = (industry: Industry) => {
     setSelectedIndustry(industry);
   };
 
-  const currentProduct = activeProductId
+  const currentProduct = (!isSitemap && activeProductId)
     ? PRODUCTS.find((p) => p.id === activeProductId) || null
     : null;
 
@@ -116,12 +136,20 @@ export default function App() {
           onOpenContact={(svc) => handleOpenContact(svc || currentProduct?.title)}
           onSelectProduct={handleSelectProduct}
           onNavigateHome={handleNavigateHome}
-          onOpenSitemap={() => setSitemapOpen(true)}
-          isProductPage={!!currentProduct}
+          onOpenSitemap={handleNavigateSitemap}
+          isProductPage={!!currentProduct || isSitemap}
         />
 
         <main className="flex-1 w-full m-0 p-0">
-          {currentProduct ? (
+          {isSitemap ? (
+            /* DEDICATED SITEMAP WEBPAGE */
+            <SitemapPage
+              onNavigateHome={handleNavigateHome}
+              onSelectProduct={handleSelectProduct}
+              onSelectIndustry={handleSelectIndustry}
+              onOpenContact={(svc) => handleOpenContact(svc || 'Sitemap Architecture Consultation')}
+            />
+          ) : currentProduct ? (
             /* DEDICATED INDIVIDUAL PRODUCT PAGE */
             <ProductPage
               product={currentProduct}
@@ -172,9 +200,9 @@ export default function App() {
         {/* GLOBAL FOOTER */}
         <Footer
           onOpenContact={(svc) => handleOpenContact(svc || currentProduct?.title)}
-          onOpenSitemap={() => setSitemapOpen(true)}
+          onOpenSitemap={handleNavigateSitemap}
           onNavigateHome={handleNavigateHome}
-          isProductPage={!!currentProduct}
+          isProductPage={!!currentProduct || isSitemap}
         />
       </div>
 
@@ -189,22 +217,6 @@ export default function App() {
         industry={selectedIndustry}
         onClose={() => setSelectedIndustry(null)}
         onInquire={(industryName) => handleOpenContact(`Industry Solution for ${industryName}`)}
-      />
-
-      <SitemapModal
-        isOpen={sitemapOpen}
-        onClose={() => setSitemapOpen(false)}
-        onNavigateSection={(sectionId) => {
-          handleNavigateHome(sectionId);
-        }}
-        onSelectProduct={(productId) => {
-          handleSelectProduct(productId);
-        }}
-        onSelectIndustry={(industryId) => {
-          const found = INDUSTRIES.find((ind) => ind.id === industryId);
-          if (found) setSelectedIndustry(found);
-        }}
-        onOpenContact={handleOpenContact}
       />
     </div>
   );
