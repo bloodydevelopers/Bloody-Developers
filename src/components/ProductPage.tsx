@@ -8,7 +8,6 @@ import {
   Server,
   Layers,
   ChevronDown,
-  PhoneCall,
   Sparkles,
   ExternalLink,
   Lock,
@@ -59,6 +58,7 @@ import {
 } from 'lucide-react';
 import { Product, PRODUCTS } from '../data/products';
 import { motion, AnimatePresence } from 'motion/react';
+import { WhatsAppIcon, WHATSAPP_NUMBERS } from './WhatsAppUI';
 
 interface ProductPageProps {
   product: Product;
@@ -243,13 +243,23 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <a
-                href="tel:7684047069"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0b1523] hover:bg-[#0f1d2e] text-white text-[14px] sm:text-[15px] font-bold px-5 py-3.5 rounded-xl border border-white/12 hover:border-[#ff2638]/50 transition-all duration-200 cursor-pointer shadow-md active:scale-98 min-h-12"
-              >
-                <PhoneCall className="w-4 h-4 text-[#ff2638]" />
-                <span>Call: 7684047069</span>
-              </a>
+              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                {WHATSAPP_NUMBERS.map((wa) => (
+                  <a
+                    key={wa.id}
+                    href={wa.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/35 hover:border-[#25D366]/70 text-white hover:text-[#25D366] text-[13px] sm:text-[14px] font-bold px-4 py-3.5 rounded-xl transition-all duration-200 cursor-pointer shadow-[0_0_15px_rgba(37,211,102,0.15)] active:scale-98 min-h-12"
+                    title={`Chat with ${wa.label} on WhatsApp`}
+                  >
+                    <span className="w-5 h-5 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow-[0_0_6px_rgba(37,211,102,0.5)]">
+                      <WhatsAppIcon className="w-3 h-3" />
+                    </span>
+                    <span>{wa.number === '8917323361' ? 'WhatsApp 8917323361' : 'WhatsApp 7684047069'}</span>
+                  </a>
+                ))}
+              </div>
             </div>
 
             {/* Key Live Telemetry Cards */}
@@ -492,13 +502,23 @@ export const ProductPage: React.FC<ProductPageProps> = ({
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <a
-                href="tel:7684047069"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0b1523] hover:bg-[#0f1d2e] text-white text-[14px] font-bold px-5 py-3.5 rounded-xl border border-white/12 hover:border-[#ff2638]/50 transition-all cursor-pointer active:scale-98 min-h-12"
-              >
-                <PhoneCall className="w-4 h-4 text-[#ff2638]" />
-                <span>Call Directly: 7684047069</span>
-              </a>
+              <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                {WHATSAPP_NUMBERS.map((wa) => (
+                  <a
+                    key={wa.id}
+                    href={wa.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/35 hover:border-[#25D366]/70 text-white hover:text-[#25D366] text-[13px] sm:text-[14px] font-bold px-4 py-3.5 rounded-xl transition-all cursor-pointer active:scale-98 min-h-12"
+                    title={`Chat with ${wa.label} on WhatsApp`}
+                  >
+                    <span className="w-5 h-5 rounded-full bg-[#25D366] flex items-center justify-center text-white shrink-0 shadow-[0_0_6px_rgba(37,211,102,0.5)]">
+                      <WhatsAppIcon className="w-3 h-3" />
+                    </span>
+                    <span>{wa.number === '8917323361' ? 'WhatsApp 8917323361' : 'WhatsApp 7684047069'}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
