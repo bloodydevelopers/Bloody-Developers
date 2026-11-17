@@ -1,5 +1,58 @@
+# robots.txt for Bloody Developer (https://bloodydevelopers.vercel.app)
+# Optimized for Google Search, Bing, Google Ads, and AI Agents
+
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://ais-dev-6t6tvsrobhqxrafgftcenw-417968312171.asia-east1.run.app/sitemap.xml
+# Disallow internal scripts & build artifacts
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /dist/
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /favicon.png
+Allow: /favicon.svg
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# AI Crawlers & LLM Retrieval Agents
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Host & Canonical Sitemaps
+Host: https://bloodydevelopers.vercel.app
+Sitemap: https://bloodydevelopers.vercel.app/sitemap.xml
