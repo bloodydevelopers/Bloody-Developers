@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   FileCode,
   CheckCircle2,
-  Phone,
   MapPin,
   Globe,
   Sparkles,
@@ -21,6 +20,7 @@ import {
 import { PRODUCTS, Product } from '../data/products';
 import { INDUSTRIES, Industry } from '../data/industries';
 import { motion } from 'motion/react';
+import { WhatsAppIcon, WHATSAPP_NUMBERS } from './WhatsAppUI';
 
 interface SitemapPageProps {
   onNavigateHome: (sectionId?: string) => void;
@@ -442,10 +442,24 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({
                 <span>Rourkela, Odisha, India</span>
               </span>
               <span className="text-white/20">·</span>
-              <a href="tel:7684047069" className="flex items-center gap-1.5 hover:text-[#ff2638] transition-colors">
-                <Phone className="w-3.5 h-3.5 text-[#ff2638]" />
-                <span>+91 7684047069</span>
-              </a>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[#25D366] font-semibold text-[11px] uppercase tracking-wider flex items-center gap-1">
+                  <WhatsAppIcon className="w-3.5 h-3.5" />
+                  <span>WhatsApp:</span>
+                </span>
+                {WHATSAPP_NUMBERS.map((wa) => (
+                  <a
+                    key={wa.id}
+                    href={wa.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-white hover:text-[#25D366] transition-colors font-medium text-[11.5px]"
+                    title={`Chat with ${wa.label} on WhatsApp`}
+                  >
+                    <span>{wa.display}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
