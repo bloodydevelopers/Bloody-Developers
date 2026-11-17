@@ -6,7 +6,6 @@ import {
   ChevronDown,
   HelpCircle,
   MessageSquare,
-  Phone,
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
@@ -21,6 +20,7 @@ import {
   sectionHeaderVariants,
   defaultViewport,
 } from '../utils/motionVariants';
+import { WhatsAppIcon, WHATSAPP_NUMBERS } from './WhatsAppUI';
 
 interface TestimonialsFaqSectionProps {
   onOpenContact: (defaultService?: string) => void;
@@ -299,13 +299,21 @@ export const TestimonialsFaqSection: React.FC<TestimonialsFaqSectionProps> = ({
                 <span>Ask an Expert</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
-              <a
-                href="tel:7684047069"
-                className="inline-flex items-center gap-2 bg-white/6 hover:bg-white/12 border border-white/12 text-white text-[13px] font-semibold px-4 py-2.5 rounded-xl transition-all cursor-pointer active:scale-97"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#ff2638] fill-[#ff2638]" />
-                <span>7684047069</span>
-              </a>
+              <div className="flex flex-wrap items-center gap-2">
+                {WHATSAPP_NUMBERS.map((wa) => (
+                  <a
+                    key={wa.id}
+                    href={wa.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 bg-[#25D366]/15 hover:bg-[#25D366]/25 border border-[#25D366]/40 hover:border-[#25D366]/70 text-white hover:text-[#25D366] text-[12.5px] font-semibold px-3 py-2.5 rounded-xl transition-all cursor-pointer active:scale-97 shadow-[0_0_12px_rgba(37,211,102,0.2)]"
+                    title={`Chat with ${wa.label} on WhatsApp`}
+                  >
+                    <WhatsAppIcon className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>{wa.display}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>
