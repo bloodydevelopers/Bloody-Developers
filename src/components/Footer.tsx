@@ -161,18 +161,20 @@ export const Footer: React.FC<FooterProps> = ({
             <span className="hover:text-white transition-colors cursor-pointer">Privacy Policy</span>
             <span className="text-white/20">·</span>
             <span className="hover:text-white transition-colors cursor-pointer">Terms & Conditions</span>
-            {/* {onOpenSitemap && (
-              <>
-                <span className="text-white/20">·</span>
-                <button
-                  type="button"
-                  onClick={onOpenSitemap}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Sitemap
-                </button>
-              </>
-            )} */}
+            <span className="text-white/20">·</span>
+            {/* <a
+              href="/sitemap"
+              onClick={(e) => {
+                if (onOpenSitemap) {
+                  e.preventDefault();
+                  onOpenSitemap();
+                }
+              }}
+              className="hover:text-white transition-colors cursor-pointer text-[#ff2638] font-medium"
+              title="HTML Sitemap & Technical Directory"
+            >
+              Sitemap
+            </a> */}
           </div>
         </div>
       </div>
